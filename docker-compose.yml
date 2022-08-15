@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    container_name: tuits
+    restart: always
+    environment:
+      MYSQL_DATABASE: tuit
+      MYSQL_USER: brian
+      MYSQL_PASSWORD: kupita
+      MYSQL_ROOT_PASSWORD: kupita
+      MYSQL_ALLOW_EMPTY_PASSWORD: false
+    # volumes:
+    #  - /var/lib/mysql/data
+    ports:
+      - 3306:3306
