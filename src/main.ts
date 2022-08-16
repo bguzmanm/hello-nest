@@ -9,8 +9,11 @@ async function bootstrap() {
       transform: true,
       whitelist: true, // filtra datos que no corresponden
       forbidNonWhitelisted: true, // retorna un error si se envía información incorrecta
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     }),
   );
-  await app.listen(3000);
+  await app.listen(AppModule.port);
 }
 bootstrap();

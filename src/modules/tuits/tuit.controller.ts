@@ -4,7 +4,7 @@ import {
 
 import { TuitService } from './tuit.service';
 import { Tuit } from './tuit.entity';
-import { CreateTuitDto, UpdateTuitDto } from "./dto";
+import { CreateTuitDto, PaginationQueryDto, UpdateTuitDto } from "./dto";
 
 @Controller('tuits')
 export class TuitController {
@@ -14,10 +14,10 @@ export class TuitController {
   }
 
   @Get()
-  getTuits(@Query() filterQuery): Promise<Tuit[]> {
-    const {searchTerms, orderBy } = filterQuery;
+  getTuits(@Query() pagination: PaginationQueryDto): Promise<Tuit[]> {
+
     //return `Hola desde tuiter: filtrando por ${searchTerms} y ordenado por ${orderBy}`;
-    return this.tuitService.getTuits();
+    return this.tuitService.getTuits(pagination);
   }
   @Get(':id')
   getTuit(@Param('id') id: number): Promise<Tuit> {
